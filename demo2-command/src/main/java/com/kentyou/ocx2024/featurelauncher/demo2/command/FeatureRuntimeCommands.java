@@ -28,7 +28,7 @@ public class FeatureRuntimeCommands {
 	
 	private String prettyPrintInstalledFeature(InstalledFeature f) {
 		StringBuilder sb = new StringBuilder();
-		sb.append(f.getFeatureId())
+		sb.append(f.getFeature().getID())
 			.append(" ::\n  Installed Bundles:\n");
 			
 		f.getInstalledBundles().stream()
@@ -65,10 +65,10 @@ public class FeatureRuntimeCommands {
 	
 	public void removeFeature(String feature) {
 		InstalledFeature i = featureRuntime.getInstalledFeatures().stream()
-			.filter(ib -> ib.getFeatureId().toString().equals(feature))
+			.filter(ib -> ib.getFeature().getID().toString().equals(feature))
 			.findFirst()
 			.orElseThrow();
-		featureRuntime.remove(i.getFeatureId());
+		featureRuntime.remove(i.getFeature().getID());
 	}
 
 	
